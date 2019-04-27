@@ -1,0 +1,26 @@
+\documentclass{bjutthesis}
+% \documentclass[fontset=windows]{ctexbook}
+% \documentclass{book}
+% \usepackage[fontset=windowsold]{ctex}
+% \usepackage{bm}
+\usepackage{pdfpages}
+%标题、作者及日期
+\bigtitle{北京工业大学工学博士学位论文}
+\title{北京工业大学工学博士学位论文}
+\author{xiaoyao}
+\date{\today}
+% \usepackage{layout}
+\begin{document}
+\includepdf[pages={1,2,3,4,5,6}]{cover.pdf}
+% \layout
+% \maketitle
+\frontmatter
+\pagenumbering{Roman}% 页码符号
+%生成文档目录
+\tableofcontents
+
+\mainmatter
+\input{Chap_Intro}
+\input{Chap_ex}
+
+\end{document}
