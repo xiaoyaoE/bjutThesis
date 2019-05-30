@@ -11,15 +11,16 @@
 \universitycode{10005}%学校代码,默认10005
 \universityname{北京工业大学}%学校名称
 \department{应用数理学院}%学院名称
-
 \title{变系数空间自回归模型参数估计与变量选择的模拟及应用}%论文题目
-\titleEN{SIMULATION AND APPLICATION OF PARAMETER ESTIMATION AND VARIABLE SELECTION IN VARIABLE COEFFICIENT SPATIAL AUTOREGRESSIVE MODEL}% 英文题目,全大写
+\titleEN{SIMULATION AND APPLICATION OF PARAMETER ESTIMATION \\ AND VARIABLE SELECTION IN VARIABLE COEFFICIENT \\ SPATIAL AUTOREGRESSIVE MODEL}% 英文题目,全大写
 \author{王 ~ 日}%论文作者
 \studentID{S201706094}%学号
 \major{统计学}%学科专业
 \researchdirection{应用统计}%研究方向
 \supervisor{XXX教授 }%指导教师
 \date{2019年5月}%缺失为当天日期
+\bigtitle{北京工业大学理学硕士学位论文}%偶数页页眉内容
+\bibliographystyle{ustcthesis-authoryear.bst}    
 % \usepackage{layout}
 \begin{document}
 \makehardcover%最外面装订的封面
@@ -36,11 +37,20 @@
 % \maketitle
 \frontmatter
 \pagenumbering{Roman}% 页码符号
-%生成文档目录
-\tableofcontents
+
+\input{abstract}%摘要
+
+\tableofcontents%生成文档目录
+
 
 \mainmatter
 \input{Chap_Intro}
 \input{Chap_ex}
+\input{Chap_crosscite.tex}
+
+
+\backmatter
+
+\bibliography{references.bib}
 
 \end{document}

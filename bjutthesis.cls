@@ -167,7 +167,9 @@
 \bjut@define@term{researchdirection}{XXXX}
 \bjut@define@term{supervisor}{XXX\quad 教授}
 \bjut@define@term{date}{\zhtoday}
-
+\bjut@define@term{bigtitle}{}
+\bjut@define@term{keywords}{}
+\bjut@define@term{enkeywords}{}
 
 \newcommand\makehardcover{%
 \pagestyle{empty}
@@ -337,7 +339,7 @@
 %- Define different kinds of header and footer for different parts
 \fancypagestyle{frontmatterstyle}{% style for frontmatter
     \fancyhf{}% clear fields
-    \fancyhead[CE]{\footnotesize \kaishu \@bigtitle}% structure elements
+    \fancyhead[CE]{\footnotesize \kaishu \bjut@bigtitle}% structure elements
     \fancyhead[CO]{\footnotesize \kaishu \leftmark}% structure elements
     \fancyfoot[CE,CO]{\footnotesize -\thepage-}% page number
     \renewcommand{\headrulewidth}{0.8pt}% header rule
@@ -345,7 +347,7 @@
 }
 \fancypagestyle{mainmatterstyle}{% style for mainmatter
     \fancyhf{}% clear fields
-    \fancyhead[CE]{\footnotesize \kaishu \@bigtitle}% structure elements
+    \fancyhead[CE]{\footnotesize \kaishu \bjut@bigtitle}% structure elements
     \fancyhead[CO]{\footnotesize \kaishu \CTEXthechapter\quad \leftmark}% structure elements
     \fancyfoot[CE,CO]{\footnotesize -\thepage-}% page number
     \renewcommand{\headrulewidth}{0.8pt}% header rule
@@ -353,7 +355,7 @@
 }
 \fancypagestyle{backmatterstyle}{% header and footer style for backmatter
     \fancyhf{}% clear fields
-    \fancyhead[CE]{\footnotesize \kaishu \@bigtitle}% structure elements
+    \fancyhead[CE]{\footnotesize \kaishu \bjut@bigtitle}% structure elements
     \fancyhead[CO]{\footnotesize \kaishu \leftmark}% structure elements
     \fancyfoot[CE,CO]{\footnotesize -\thepage-}% page number
     \renewcommand{\headrulewidth}{0.8pt}% header rule
@@ -439,3 +441,23 @@
 
 \linespread{1.41}
 \setlength{\parskip}{0.5ex plus 0.25ex minus 0.25ex}
+
+
+\NewDocumentCommand\bjut@chapter{o m}{%
+  \chapter*{#2}\chaptermark{#2}
+  \addcontentsline{toc}{chapter}{#2}
+
+}
+\newenvironment{abstract}{%
+    \bjut@chapter{摘\quad 要}%
+}{
+  \par\null\par\noindent\hangindent=4\ccwd\relax
+  \textbf{关键词}：\bjut@keywords
+}
+
+\newenvironment{enabstract}{%
+    \bjut@chapter{Abstract}%
+}{
+  \par\null\par\noindent\hangindent=5.3em\relax
+  \textbf{Key Words}: \bjut@enkeywords
+}
