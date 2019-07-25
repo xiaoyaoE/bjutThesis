@@ -5,7 +5,7 @@
 \RequirePackage{bm}
 \RequirePackage{hyperref}
 \RequirePackage{ifthen}
-
+\RequirePackage{xeCJK}
 \hypersetup{% set hyperlinks
     bookmarks=true,% show bookmarks bar
     pdfencoding=auto,% allows non-Latin based languages in bookmarks
@@ -29,7 +29,7 @@
 }
 \newcommand\bjut@fontset{\csname g__ctex_fontset_tl\endcsname}
 
-\ifthenelse{\equal{\bjut@fontset}{fandol}}{%linux 
+\ifthenelse{\equal{\bjut@fontset}{fandol}}{%linux
   %\setmainfont[
   %  Extension      = .otf,
   %  UprightFont    = *-regular,
@@ -112,6 +112,7 @@
   \xeCJKsetwidth{‘’“”}{1em}
 }{}
 
+
 %\setCJKsansfont{SimHei}
 %\setCJKmainfont[BoldFont={SimHei},ItalicFont={KaiTi}]{SimSun}
 %\setCJKmonofont{FangSong}%
@@ -128,15 +129,18 @@
 % \renewcommand*\l@subparagraph{ \@dottedtocline{5}{60pt}{60pt}}
 % \makeatother
 
-% \RequirePackage{titletoc}
-% % \RequirePackage[toc]{multitoc}
-% \titlecontents{chapter}[4em]{\vspace{0mm} \zihao{4} \heiti}{\contentslabel{4.0em}}{}{
-% 	\zihao{-4} \titlerule*[0.5pc]{$\cdot$}\contentspage}
-% \titlecontents{section}[4em]{\zihao{-4}}{\contentslabel{2.5em}}{}{%
-% 	\titlerule*[0.5pc]{$\cdot$}\contentspage}
-% \titlecontents{subsection}[7.0em]{\zihao{-4}}{\contentslabel{2.5em}}{}{%
-% 	\titlerule*[0.5pc]{$\cdot$}\contentspage}
-
+\RequirePackage{titletoc}
+%\RequirePackage[toc]{multitoc}
+\titlecontents{chapter}[4em]{\vspace{0mm} \zihao{4} \heiti}{\contentslabel{4.0em}}{}{
+ 	\zihao{-4} \titlerule*[0.5pc]{$\cdot$}\contentspage}
+\titlecontents{section}[4em]{\zihao{-4}}{\contentslabel{2.5em}}{}{%
+ 	\titlerule*[0.5pc]{$\cdot$}\contentspage}
+\titlecontents{subsection}[7.0em]{\zihao{-4}}{\contentslabel{2.5em}}{}{%
+ 	\titlerule*[0.5pc]{$\cdot$}\contentspage}
+\RequirePackage{titlesec}
+\titlespacing{\section}{0pt}{*0.3}{*0.3}
+%\RequirePackage{tocloft}
+%\setlength\cftaftertoctitleskip{5ex}
 % \makeatletter
 % \renewcommand{\numberline}[1]{%
 % \settowidth\@tempdimb{#1\hspace{0.5em}}%
@@ -219,19 +223,23 @@
 \end{tabular}
 
 \vspace{2cm}
- \centerline{\kaishu \bf \zihao{1}\quad 北京工业大学理学硕士学位论文}
+ \centerline{  \zihao{1}\bfseries\kaishu{  北京工业大学理学硕士学位论文}}
 \vspace{2cm}
 % \centerline{\kaishu \bf \zihao{1}\quad （全日制）}
 \vspace{2cm}
 
 
+%\begin{tabular}{ll}
+%{\songti \bf \zihao{4}{题\hspace{1.04cm}目}:}&{\underline{\bjut@title}}\\
+%{\songti \bf \zihao{4} {英文题目}:}&{\underline{\bjut@titleEN}}
+%\end{tabular}
 
 \noindent {\songti \bf \zihao{4}{题\hspace{1.04cm}目}:}
 {\parbox[t]{8cm}{\underline{\bjut@title}}}
 
  \vspace{5mm}
  \noindent {\songti \bf \zihao{4} {英文题目}:}
-\uline{SIMULATION AND APPLICATION OF PARAMETER ESTIMATION AND VARIABLE SELECTION IN VARIABLE COEFFICIENT SPATIAL AUTOREGRESSIVE MODEL}
+\uline{\bjut@titleEN}
 
 
 \vspace{2cm}
@@ -314,10 +322,15 @@
 \RequirePackage[titles]{tocloft}
 \renewcommand{\cftdot}{$\cdot$}
 \renewcommand{\cftdotsep}{1}
-\setlength{\cftbeforechapskip}{5pt}
-\setlength{\cftbeforesecskip}{3pt}
-\setlength{\cftbeforesubsecskip}{3pt}
-\renewcommand{\cftchapfont}{\zihao{4}\heiti}
+\setlength{\cftbeforechapskip}{0pt}
+\setlength{\cftbeforesecskip}{0pt}
+\setlength{\cftbeforesubsecskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0pt}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0pt}
+
+
+\renewcommand{\cftchapfont}{\zihao{-4}\heiti}
 \renewcommand{\cftsecfont}{\zihao{-4}\songti}
 \renewcommand{\cftsubsecfont}{\zihao{-4}\songti}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}
@@ -405,7 +418,7 @@
         number = \arabic{chapter},
         aftername = \quad,
         beforeskip = {0pt},
-        afterskip = {18pt},
+        afterskip = {20.8pt},
         pagestyle = plain,
     }
 }
@@ -415,8 +428,8 @@
     section = {
         format = \linespread{1.0}\zihao{4}\sffamily\raggedright,
         aftername = \enspace,
-        beforeskip = {13pt},
-        afterskip = {6pt},
+        beforeskip = {19.5pt},
+        afterskip = {19.5pt},
     }
 }
 %- subsection
@@ -424,8 +437,8 @@
     subsection = {
         format = \linespread{1.0}\zihao{-4}\sffamily\raggedright,
         aftername = \enspace,
-        beforeskip = {13pt},
-        afterskip = {6pt},
+        beforeskip = {19.5pt},
+        afterskip = {16.64pt},
     }
 }
 % - subsubsection
@@ -433,13 +446,15 @@
     subsubsection = {
         format = \linespread{1.0}\zihao{-4}\kaishu\raggedright,
         aftername = \enspace,
-        beforeskip = {13pt},
-        afterskip = {3pt},
+        beforeskip = {0pt},
+        afterskip = {16.64pt},
         %runin = true
     }
 }
-
-\linespread{1.41}
+\RequirePackage{setspace}
+%\renewcommand{\baselinestretch}{2.3}
+%\setstretch{0.1}
+%\linespread{1.3}\selectfont
 \setlength{\parskip}{0.5ex plus 0.25ex minus 0.25ex}
 
 
