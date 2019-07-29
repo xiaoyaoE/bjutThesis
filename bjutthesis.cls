@@ -6,6 +6,8 @@
 \RequirePackage{hyperref}
 \RequirePackage{ifthen}
 \RequirePackage{xeCJK}
+\RequirePackage[normalem]{ulem}
+\useunder{\uline}{\ulined}{}
 \hypersetup{% set hyperlinks
     bookmarks=true,% show bookmarks bar
     pdfencoding=auto,% allows non-Latin based languages in bookmarks
@@ -28,6 +30,8 @@
     %hidelinks% remove link color and border
 }
 \newcommand\bjut@fontset{\csname g__ctex_fontset_tl\endcsname}
+
+\setmainfont{Times New Roman}
 
 \ifthenelse{\equal{\bjut@fontset}{fandol}}{%linux
   %\setmainfont[
@@ -164,7 +168,7 @@
 \bjut@define@term{universityname}{北京工业大学}
 \bjut@define@term{department}{应用数理学院}
 \bjut@define@term{title}{论文题目}
-\bjut@define@term{titleEN}{英文论文题目,全大写}
+%\bjut@define@term{titleEN}{英文论文题目,全大写}
 \bjut@define@term{author}{XXXX}
 \bjut@define@term{studentID}{XXXX}
 \bjut@define@term{major}{XXXX}
@@ -174,6 +178,8 @@
 \bjut@define@term{bigtitle}{}
 \bjut@define@term{keywords}{}
 \bjut@define@term{enkeywords}{}
+
+
 
 \newcommand\makehardcover{%
 \pagestyle{empty}
@@ -228,18 +234,10 @@
 % \centerline{\kaishu \bf \zihao{1}\quad （全日制）}
 \vspace{2cm}
 
-
-%\begin{tabular}{ll}
-%{\songti \bf \zihao{4}{题\hspace{1.04cm}目}:}&{\underline{\bjut@title}}\\
-%{\songti \bf \zihao{4} {英文题目}:}&{\underline{\bjut@titleEN}}
-%\end{tabular}
-
-\noindent {\songti \bf \zihao{4}{题\hspace{1.04cm}目}:}
-{\parbox[t]{8cm}{\underline{\bjut@title}}}
-
- \vspace{5mm}
- \noindent {\songti \bf \zihao{4} {英文题目}:}
-\uline{\bjut@titleEN}
+\begin{tabular}{lp{11.3cm}}
+{\songti \bf \zihao{4}{题\hspace{1.04cm}目}:}&{\uline{\hfill \bjut@title \hfill}} \\
+{\songti \bf \zihao{4} {英文题目}:}&{\expandafter\ulined\titleEN\hfill}
+\end{tabular}
 
 
 \vspace{2cm}
@@ -471,8 +469,11 @@
 }
 
 \newenvironment{enabstract}{%
-    \bjut@chapter{Abstract}%
+    \chapter{\bf{Abstract}}%
+    \chaptermark{Abstract}
 }{
   \par\null\par\noindent\hangindent=5.3em\relax
   \textbf{Key Words}: \bjut@enkeywords
 }
+%\RequirePackage{natbib}
+%\rnewcommand\citet{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
